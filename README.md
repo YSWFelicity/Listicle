@@ -52,6 +52,24 @@ display all eleven fields, including the ID, slug, and extended details.
 All three implementation milestones are complete.
 Data lives in a JavaScript module, ready to move into a database in Unit 2.
 
+## Assignment requirements
+
+| Requirement | Implementation |
+| --- | --- |
+| HTML, CSS, and JavaScript without a frontend framework | Static HTML pages and native DOM/fetch APIs in `public/js/` |
+| Express web server and request handlers | Static middleware, collection API, single-event API, and detail routes in `server.js` |
+| Styled front page with a title | Campus Weekends homepage with a visible heading and responsive event cards |
+| At least five unique items | Six fictional events in `data/events.js` |
+| At least three displayed attributes per item | Each card shows title, category, description, day, time, venue, price, and organizer |
+| A corresponding page for each item | Event titles and Explore event links navigate to `/events/:slug` |
+| All data fields in the detailed view | Detail pages display all eleven fields, including ID, slug, and extended details |
+| Appropriate 404 page | Unknown page/event routes serve `pages/404.html` with HTTP status 404 |
+| Pico CSS styling | Pico CSS is installed through npm and served locally |
+
+The five automated route tests passed during implementation. Visual appearance,
+browser interactions, and mobile layout still need the manual checks below; no
+browser session was available for automated UI verification.
+
 ## Verification
 
 Run `npm test` to check the six events, shared fields, detail routes, static assets,
@@ -67,6 +85,20 @@ For a manual browser check:
 6. Check the list and detail pages at a narrow mobile width.
 
 Example detail URL: http://localhost:3000/events/clay-and-coffee
+
+## Suggested submission walkthrough
+
+1. Show the homepage title and scroll through all six event cards.
+2. Search for `clay` with All categories selected to show one matching event.
+3. Clear the search, select Music, then return to All categories.
+4. Open Clay & Coffee and show the complete details, including ID and slug.
+5. Refresh the detail page to demonstrate that its URL works directly.
+6. Open `/events/not-a-real-event` and `/missing`, then use the return link.
+
+If your course submission asks for screenshots or a recording, capture the
+homepage, an event detail page, and the 404 page after completing the manual checks.
+The GitHub repository stores the source code; to run the Express backend locally,
+use the startup commands above.
 
 ## References
 

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event details | Campus Weekends</title>
+    <link rel="stylesheet" href="/vendor/pico/pico.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/event.js" defer></script>
+  </head>
+  <body>
+    <header class="container">
+      <nav aria-label="Main navigation">
+        <ul><li><a class="brand" href="/">Listicle<span>.</span></a></li></ul>
+        <ul><li><a href="/#collection">The collection</a></li></ul>
+      </nav>
+    </header>
+    <main class="container detail-page">
+      <a href="/#collection">← Back to all events</a>
+      <p id="detail-status" role="status">Loading event…</p>
+      <button id="retry" type="button" hidden>Try again</button>
+      <section id="event" aria-busy="true" aria-labelledby="event-title" hidden>
+        <div class="intro">
+          <p id="event-category" class="eyebrow"></p>
+          <h1 id="event-title"></h1>
+          <p id="event-description" class="subtitle"></p>
+        </div>
+        <article>
+          <h2>Your weekend plan</h2>
+          <dl id="event-attributes" class="detail-attributes"></dl>
+        </article>
+        <article>
+          <h2>What to expect</h2>
+          <p id="event-details"></p>
+        </article>
+        <p class="demo-note">This is a fictional event created for a student project. Times and locations are for demonstration only.</p>
+      </section>
+      <noscript><p>Please enable JavaScript to view event details.</p></noscript>
+    </main>
+    <footer class="container"><small>Listicle — Make room for a little adventure.</small></footer>
+  </body>
+</html>

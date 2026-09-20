@@ -17,7 +17,7 @@ header nav { border-bottom: 1px solid #dce2d8; }
 h1 { font-size: clamp(2.5rem, 7vw, 4.7rem); line-height: 1.05; letter-spacing: -0.045em; }
 .subtitle { max-width: 620px; color: #637167; }
 article { border: 1px solid #dce2d8; box-shadow: none; }
-footer { margin-top: 3rem; color: #637167; }
+body > footer { margin-top: 3rem; color: #637167; }
 
 .demo-note { max-width: 620px; color: #637167; font-size: 0.8rem; }
 .filters { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; }
@@ -32,8 +32,18 @@ footer { margin-top: 3rem; color: #637167; }
 .event-card dl { margin-bottom: 0; font-size: 0.8rem; }
 .event-card dt { color: #526852; font-weight: 700; margin-top: 0.7rem; }
 .event-card dd { margin: 0; }
+.event-card { display: flex; flex-direction: column; }
+.event-card h3 a { color: inherit; text-decoration: none; }
+.event-card h3 a:hover { text-decoration: underline; }
+.event-card dl { margin-bottom: 1.25rem; }
+.event-card footer { margin-top: auto; background: transparent; font-size: 0.85rem; }
+.detail-page { padding-top: 2rem; }
+.detail-page .intro { padding-top: 2rem; }
+.detail-attributes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.detail-attributes dt { color: #526852; font-weight: 700; }
+.detail-attributes dd { margin: 0.25rem 0 0; overflow-wrap: anywhere; }
 @media (max-width: 1000px) { .event-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) {
-  .event-grid, .filters { grid-template-columns: 1fr; }
+  .event-grid, .filters, .detail-attributes { grid-template-columns: 1fr; }
   .filters { gap: 0; }
 }

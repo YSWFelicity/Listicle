@@ -20,13 +20,23 @@ function createCard(event) {
   const heading = document.createElement('header');
   heading.append(element('span', event.category, 'category-tag'));
   heading.append(element('span', event.price === 0 ? 'Free' : currency.format(event.price), 'event-price'));
-  card.append(heading, element('h3', event.title), element('p', event.description));
+  const title = document.createElement('h3');
+  const link = element('a', event.title);
+  link.href = `/events/${encodeURIComponent(event.slug)}`;
+  title.append(link);
+  card.append(heading, title, element('p', event.description));
 
   const attributes = document.createElement('dl');
   for (const [label, value] of [['When', `${event.day} · ${event.time}`], ['Where', event.venue], ['Hosted by', event.organizer]]) {
     attributes.append(element('dt', label), element('dd', value));
   }
   card.append(attributes);
+  const footer = document.createElement('footer');
+  const detailLink = element('a', 'Explore event →');
+  detailLink.href = link.href;
+  detailLink.setAttribute('aria-label', `Explore ${event.title}`);
+  footer.append(detailLink);
+  card.append(footer);
   return card;
 }
 

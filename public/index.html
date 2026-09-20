@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A collection of things worth discovering.">
-    <title>Listicle | Discover something new</title>
+    <meta name="description" content="Discover a collection of campus weekend activities, from live music to creative workshops.">
+    <title>Campus Weekends | Listicle</title>
     <link rel="stylesheet" href="/vendor/pico/pico.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/events.js" defer></script>
   </head>
   <body>
     <header class="container">
@@ -17,18 +18,27 @@
     </header>
     <main class="container">
       <section class="intro" aria-labelledby="page-title">
-        <p class="eyebrow">A little curiosity goes a long way</p>
-        <h1 id="page-title">Discover something new.</h1>
-        <p class="subtitle">Good finds deserve a place of their own. Explore our growing collection.</p>
+        <p class="eyebrow">Campus weekends · Good company, new experiences</p>
+        <h1 id="page-title">Less scrolling.<br>More exploring.</h1>
+        <p class="subtitle">A little music, a breath of fresh air, or something you've never tried. Find your kind of weekend.</p>
+        <p class="demo-note">A student project featuring fictional events. Times and locations are for demonstration only.</p>
       </section>
       <section id="collection" aria-labelledby="collection-title">
-        <h2 id="collection-title">The collection</h2>
-        <article>
-          <h3>A fresh start</h3>
-          <p>Our collection is coming soon. Check back for things worth exploring.</p>
-        </article>
+        <h2 id="collection-title">Find your next plan</h2>
+        <div class="filters">
+          <label for="search">Search events
+            <input id="search" type="search" placeholder="Try music, clay, or library" disabled>
+          </label>
+          <label for="category">Category
+            <select id="category" disabled><option value="">All categories</option></select>
+          </label>
+        </div>
+        <p id="list-status" role="status">Loading events…</p>
+        <button id="retry" type="button" hidden>Try again</button>
+        <div id="events" class="event-grid" aria-busy="true"></div>
+        <noscript><p>Please enable JavaScript to load the event collection.</p></noscript>
       </section>
     </main>
-    <footer class="container"><small>Listicle — A collection worth exploring.</small></footer>
+    <footer class="container"><small>Listicle — Make room for a little adventure.</small></footer>
   </body>
 </html>

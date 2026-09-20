@@ -35,23 +35,9 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-**TODO: Add the walkthrough GIF or video link before submitting.**
+Here's a walkthrough of implemented required features:
 
-Here's where the walkthrough of implemented required features will be added:
-
-<!-- Replace the placeholder below with the actual GIF path or URL, then remove the comment markers.
-<img src="YOUR_GIF_PATH_OR_URL" title="Video Walkthrough" width="800" alt="Video walkthrough of Campus Weekends" />
--->
-
-GIF created with: **TODO: Add the tool used to record the walkthrough.**
-
-Suggested recording sequence:
-
-1. Show the homepage title and all six event cards.
-2. Search for `clay`, clear the search, and demonstrate the Music category filter.
-3. Reset the filters and open event detail pages, keeping each unique URL visible.
-4. Show all fields on a detail page, refresh it, and return to the collection.
-5. Visit `/events/not-a-real-event` and `/missing` to demonstrate the custom 404 page.
+[Watch the Campus Weekends video walkthrough on Google Drive](https://drive.google.com/file/d/1L14qfOzIjnTXCxSM1VcLQ6SbESGXCXuW/view?usp=sharing)
 
 ## Notes
 

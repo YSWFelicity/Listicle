@@ -1,0 +1,20 @@
+:root {
+  --pico-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --pico-primary: #31634b;
+  --pico-primary-hover: #204832;
+  --pico-background-color: #f8f7f2;
+  --pico-color: #263d32;
+  --pico-card-background-color: #fffefa;
+  --pico-border-radius: 0.75rem;
+}
+
+body { min-height: 100vh; }
+header nav { border-bottom: 1px solid #dce2d8; }
+.brand { font-size: 1.5rem; font-weight: 800; text-decoration: none; }
+.brand span { color: #c26c3a; }
+.intro { padding: clamp(2rem, 7vw, 5rem) 0 2rem; max-width: 850px; }
+.eyebrow { color: #526852; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; }
+h1 { font-size: clamp(2.5rem, 7vw, 4.7rem); line-height: 1.05; letter-spacing: -0.045em; }
+.subtitle { max-width: 620px; color: #637167; }
+article { border: 1px solid #dce2d8; box-shadow: none; }
+footer { margin-top: 3rem; color: #637167; }

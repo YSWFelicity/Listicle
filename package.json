@@ -1,0 +1,16 @@
+{
+  "name": "listicle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A list-based web app built with Express, vanilla JavaScript, and Pico CSS.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@picocss/pico": "2.1.1",
+    "express": "^5.1.0"
+  }
+}

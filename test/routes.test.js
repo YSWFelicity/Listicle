@@ -2,14 +2,14 @@ import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
 import { before, after, test } from 'node:test';
-import events from '../data/events.js';
+import events from '../server/data/events.js';
 
 let server;
 let baseUrl;
 
 before(async () => {
   // Let the OS choose an available port so tests do not interrupt the dev server.
-  server = spawn(process.execPath, ['server.js'], {
+  server = spawn(process.execPath, ['server/server.js'], {
     cwd: new URL('../', import.meta.url),
     env: { ...process.env, PORT: '0' },
     stdio: ['ignore', 'pipe', 'pipe']

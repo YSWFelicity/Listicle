@@ -48,7 +48,14 @@ test('collection includes at least five unique, consistently shaped events', asy
   const response = await fetch(`${baseUrl}/api/events`);
   assert.equal(response.status, 200);
   const collection = await response.json();
-  assert.deepEqual(collection, events);
+  for (const seed of events) {
+    const stored = collection.find(event => event.slug === seed.slug);
+    assert.ok(stored, `Missing seed event: ${seed.slug}`);
+    const { id: seedId, ...expected } = seed;
+    const { id: storedId, ...actual } = stored;
+    assert.deepEqual(actual, expected);
+    assert.ok(Number.isInteger(storedId));
+  }
   assert.ok(collection.length >= 5);
   assert.equal(new Set(collection.map(event => event.id)).size, collection.length);
   assert.equal(new Set(collection.map(event => event.slug)).size, collection.length);
@@ -73,7 +80,10 @@ test('every detail URL loads directly and has a matching complete API record', a
     }
     const response = await fetch(`${baseUrl}/api/events/${event.slug}`);
     assert.equal(response.status, 200);
-    assert.deepEqual(await response.json(), event);
+    const { id, ...stored } = await response.json();
+    const { id: seedId, ...expected } = event;
+    assert.ok(Number.isInteger(id));
+    assert.deepEqual(stored, expected);
   }
 });
 
@@ -90,7 +100,7 @@ test('unknown pages and events return the styled HTML 404', async () => {
 });
 
 test('unknown API paths return JSON with HTTP 404', async () => {
-  for (const route of ['/api/events/missing', '/api/missing']) {
+  for (const route of ['/api/events/missing', '/api/missing', '/api/events/' + encodeURIComponent("' OR '1'='1")]) {
     const response = await fetch(`${baseUrl}${route}`);
     assert.equal(response.status, 404);
     assert.match(response.headers.get('content-type'), /application\/json/);

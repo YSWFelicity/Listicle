@@ -43,7 +43,7 @@ Here's a walkthrough of implemented required features:
 
 The app separates the Express backend from the static frontend. The frontend fetches event data from JSON endpoints and renders it using native DOM methods. The server checks whether an event exists before serving its detail page, so invalid event URLs return an actual HTTP 404 response.
 
-All six events are fictional demonstration data. Each event shares eleven fields: `id`, `slug`, `title`, `category`, `description`, `day`, `time`, `venue`, `price`, `organizer`, and `details`. Data is currently stored in `server/data/events.js`, ready to move into a database in Unit 2. Every field is displayed on the detail page.
+All six events are fictional demonstration data. Each event shares eleven fields: `id`, `slug`, `title`, `category`, `description`, `day`, `time`, `venue`, `price`, `organizer`, and `details`. The original data in `server/data/events.js` is now used only by the database seed script. Event routes query PostgreSQL. Every field is displayed on the detail page.
 
 Pico CSS is installed through npm and served locally. The five automated route tests passed during implementation. Browser interactions and mobile appearance still need manual verification before submission.
 
@@ -77,9 +77,9 @@ The Project 1 checklist and video above document the original app.
 - [ ] Stage 2: Create the Render PostgreSQL database and events table, seed the six events, and replace in-memory reads with SQL queries.
 - [ ] Stage 3: Verify database-backed list/detail pages, search, error handling, and update the Project 2 submission documentation.
 
-**Current state:** The app still serves its original JavaScript data. PostgreSQL is
-not yet connected to the event routes, and the Unit 2 database requirement is not
-complete. Normal startup does not reset or delete any database tables.
+**Current state:** Event routes now query PostgreSQL. A free Render database has
+been created; local credentials and the first seed/connection verification are
+still pending. Normal startup does not reset or delete any database tables.
 
 ### Refactored structure
 
@@ -92,7 +92,7 @@ server/
   config/            Environment loading, file paths, database pool, connection check
   controllers/       Event request handlers
   routes/            API and page routes
-  data/events.js     Original six events, to be used as seed data
+  data/events.js     Original six events, used only as seed data
 .env.example         Database settings template without credentials
 test/                HTTP regression tests
 ```
@@ -122,3 +122,32 @@ credentials. It does not create, seed, or reset tables.
 
 Connection configuration follows the [node-postgres connection documentation](https://node-postgres.com/features/connecting)
 and [SSL documentation](https://node-postgres.com/features/ssl).
+
+### Stage 2: Database setup
+
+Render database: [campus-weekends](https://dashboard.render.com/d/dpg-daqo8jbncjis739eqreg-a)
+(PostgreSQL 17, Oregon, free plan). Render reports an expiration date of
+October 24, 2026 for this instance.
+
+After completing the root `.env` with the external connection settings:
+
+```sh
+npm run db:check
+npm run db:seed
+npm test
+npm run dev
+```
+
+`server/config/schema.sql` defines the eleven event columns. The database generates
+IDs, requires a unique slug, and enforces a nonnegative whole-dollar price.
+`npm run db:seed` creates the table if needed and inserts missing seed events in
+one transaction. Re-running it preserves existing records rather than deleting
+or overwriting them. Never run seeding automatically on server startup.
+
+The list and detail controllers use PostgreSQL queries. Slug lookups use SQL
+parameters. Search and category filters continue to work in the browser on data
+fetched from the database. Database failures produce HTTP 503 responses; unknown
+events still return HTTP 404. No in-memory data fallback is used.
+
+`npm test` now requires a configured, reachable database with the seed data.
+It performs read-only HTTP checks and never seeds or resets the database.

@@ -4,7 +4,7 @@ Submitted by: **Yingshu Wang**
 
 About this web app: **Campus Weekends is a list-based web app that helps students explore six fictional campus activities, from acoustic music and outdoor walks to creative workshops and film nights. Users can search events, filter by category, and open individual detail pages. The app uses Express, Render PostgreSQL, vanilla HTML/CSS/JavaScript, and Pico CSS.**
 
-Time spent: **6** hours (Project 1; Project 2 time to be updated)
+Time spent: **6** hours (Project 2)
 
 ## Required Features
 
@@ -42,7 +42,7 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-**Project 2 walkthrough: Coming soon. A new recording will demonstrate the database-backed app.**
+[Watch the Project 2 video walkthrough on Google Drive](https://drive.google.com/file/d/1KFns-hpCta4hAPl7miIp1pxFYqxVOqTi/view?usp=sharing)
 
 [Watch the previous Project 1 walkthrough on Google Drive](https://drive.google.com/file/d/1L14qfOzIjnTXCxSM1VcLQ6SbESGXCXuW/view?usp=sharing)
 
@@ -115,8 +115,8 @@ checks cover the collection, each detail endpoint, static resources, and 404
 responses, including a SQL-injection-shaped slug returning 404.
 
 Run `npm test` with a configured, reachable, seeded database. Tests perform
-read-only HTTP checks; they do not seed or reset the database. Browser search,
-mobile appearance, and the new walkthrough still need a manual review.
+read-only HTTP checks; they do not seed or reset the database. Browser search
+and mobile appearance have not been verified through automated browser tests.
 
 The free Render instance created for this project reports an expiration date of
 October 24, 2026.

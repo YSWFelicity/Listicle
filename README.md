@@ -74,12 +74,13 @@ This repository is being migrated to Render PostgreSQL in separate milestones.
 The Project 1 checklist and video above document the original app.
 
 - [x] Stage 1: Separate client/server files, extract routes/controllers, install `pg` and `dotenv`, and prepare database configuration.
-- [ ] Stage 2: Create the Render PostgreSQL database and events table, seed the six events, and replace in-memory reads with SQL queries.
+- [x] Stage 2: Create the Render PostgreSQL database and events table, seed the six events, and replace in-memory reads with SQL queries.
 - [ ] Stage 3: Verify database-backed list/detail pages, search, error handling, and update the Project 2 submission documentation.
 
-**Current state:** Event routes now query PostgreSQL. A free Render database has
-been created; local credentials and the first seed/connection verification are
-still pending. Normal startup does not reset or delete any database tables.
+**Current state:** Event routes query the Render PostgreSQL database. The connection
+check succeeded, all six events were seeded, and all five HTTP integration tests
+passed against the live database on September 24, 2026. Normal startup does not
+reset or delete any database tables.
 
 ### Refactored structure
 
